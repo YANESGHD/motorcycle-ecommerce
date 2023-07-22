@@ -1,25 +1,29 @@
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from '@emotion/styled';
 import { ButtonGroup, Button } from '@mui/material';
+import { RootState, modifySection } from '@/store';
 
 export const Selector: React.FC = () => {
-  const [sectionSelected, setSectionSelected] = useState('motorcycles');
-
-  const options = [
-    { key: 'motorcycles', label: 'Motorcycles' },
-    { key: 'accesories', label: 'Accesories'},
-  ];
+  const { sections, selectedSection }= useSelector((state: RootState) => state.section);
+  const dispatch = useDispatch();
 
   return (
     <Container>
-      <ButtonGroup color='secondary' variant="text">
-        {options.map((option) => (
+      <ButtonGroup color='secondary' variant='text'>
+        {sections.map((section) => (
           <Button
-            size="large"
-            key={option.key}
-            sx={{ fontWeight: 'bold', color: option.key === sectionSelected ? '#903df7' : '#0F110C'}}
-            onClick={() => setSectionSelected(option.key)}>
-            {option.label}
+            size='large'
+            key={section.key}
+            sx={{
+              fontWeight: 'bold',
+              color:
+                section.key === selectedSection.key
+                  ? '#903df7'
+                  : '#0F110C',
+            }}
+            onClick={() => dispatch(modifySection(section))}
+          >
+            {section.label}
           </Button>
         ))}
       </ButtonGroup>

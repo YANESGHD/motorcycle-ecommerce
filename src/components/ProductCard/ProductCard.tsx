@@ -24,4 +24,12 @@ const Container = styled.div`
   align-items: center;
   padding-bottom: 25px;
   transition: box-shadow 0.3s ease-in-out;
+  width: 92%;
+  height: 240px;
+  border-radius: 14px;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
 `;
