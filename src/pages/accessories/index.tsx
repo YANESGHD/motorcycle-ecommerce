@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import styled from '@emotion/styled';
 import { ListProducts, Loader, NotFoundMessage, Landing } from '@/components';
 import { RootState, modifyProducts } from '@/store';
 
@@ -23,11 +24,17 @@ const Accessories: React.FC = () => {
   return (
     <>
       <Landing />
-      {isLoading && <Loader />}
-      {(!isLoading && !products.length) && <NotFoundMessage />}
-      {(!isLoading && products.length) && <ListProducts products={products}/>}
+      <Container>
+        {isLoading && <Loader />}
+        {!isLoading && !products.length && <NotFoundMessage />}
+        {!isLoading && products.length && <ListProducts products={products}/>}
+      </Container>
     </>
   );
 };
 
 export default Accessories;
+
+const Container = styled.div`
+  padding: 40px 20px;
+`;

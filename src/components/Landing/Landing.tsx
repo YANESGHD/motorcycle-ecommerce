@@ -5,8 +5,10 @@ export const Landing: React.FC = () => {
     <Image
       src="/motorcycle.jpg"
       alt="Landing"
-      width={1600}
-      height={500}
+      width={0}
+      height={0}
+      sizes="100vw"
+      style={{ width: '100%', height: 'auto' }} // optional
     />
   );
 }; 

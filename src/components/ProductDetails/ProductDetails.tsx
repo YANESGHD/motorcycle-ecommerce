@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 import { Grid, Typography, Button, Divider } from '@mui/material';
 import { Motorcycle } from '@/interfaces';
@@ -10,6 +11,9 @@ interface ProductDetailsProps {
 }
 
 export const ProductDetails: React.FC<ProductDetailsProps> = ({ productPath }) => {
+  const router = useRouter();
+  const currentPath = router.asPath;
+
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<Motorcycle>();
   const [showForm, setShowForm] = useState(false);
@@ -33,7 +37,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ productPath }) =
       <Grid container>
         <Grid item xs={12} sm={6}>
           <ItemContainer>
-            <Image src={`/motorcycle_photos/${data.baseProductCode}.jpg`} alt='Product' width={510} height={400}/>
+            <Image src={`${currentPath}.jpg`} alt='Product' width={500} height={350}/>
           </ItemContainer>
         </Grid>
 
@@ -43,11 +47,11 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ productPath }) =
               <ProductForm product={data} />
             ) : (
               <>
-                <Typography variant='h2' sx={{ fontSize: '36px', pb: '10px' }}>{data.name}</Typography>
+                <Typography variant='h2' sx={{ fontSize: '34px', pb: '10px' }}>{data.name}</Typography>
                 <Typography variant='body1' sx={{ pb: '20px', fontWeight: '500' }} >{data.priceFormatted}</Typography>
                 <Divider light />
                 <Typography variant='body1' sx={{ pt: '20px', pb: '8px', fontWeight: '500' }}>Description</Typography>
-                <Typography variant='body1'>{data.description}</Typography>
+                <Typography variant='body1'>{data.description ?? 'N/A'}</Typography>
                 <StyledButton variant="contained" sx={{ mt: '40px' }} onClick={() => setShowForm(true)}>Purchase</StyledButton>
               </>
             )}

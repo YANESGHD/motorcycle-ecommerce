@@ -56,7 +56,6 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product }) => {
       return;
     }
 
-    console.log({ name, lastname, email, phone})
     router.replace('/motorcycles');
   };
 
@@ -64,7 +63,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product }) => {
     <Form onSubmit={(e) => handleSubmit(e)} noValidate>
       <Grid container>
         <Grid item xs={12} sm={12} md={12}>
-          <Typography variant='h2' sx={{ fontSize: '36px', pb: '14px' }}>
+          <Typography variant='h2' sx={{ fontSize: '34px', pb: '14px' }}>
             Detail Quotation
           </Typography>
         </Grid>

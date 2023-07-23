@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import products from '@/data/motos.json';
+import accessories from '@/data/accessories.json';
 
 export default function handler(
   req: NextApiRequest,
@@ -9,6 +9,6 @@ export default function handler(
     query: { accessoryId },
   } = req;
 
-  const product = products.data.data.find((product) => product.baseProductCode === accessoryId);
+  const product = accessories.data.data.find((product) => product.baseProductCode === accessoryId);
   res.status(200).json(product);
 }
