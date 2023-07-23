@@ -1,9 +1,5 @@
-export { counterReducer } from './counter';
-export type { CounterState } from './counter';
 export type { SectionState } from './section';
 export { sectionReducer, createSection, modifySection, resetSection } from './section';
-export type { ProductState } from './product';
-export { productReducer, createProducts, modifyProducts, resetProducts, fetchingProducts } from './product';
 export type { MotorcyclesState } from './motorcycles';
 export { motorcyclesReducer, createMotorcycles, modifyMotorcycles, resetMotorcycles, fetchingMotorcycles } from './motorcycles';
 export type { AccessoriesState } from './accessories';
