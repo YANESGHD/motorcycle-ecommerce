@@ -1,11 +1,24 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from '@emotion/styled';
 import { ButtonGroup, Button } from '@mui/material';
-import { RootState, modifySection } from '@/store';
+import { RootState, modifySection, resetProducts } from '@/store';
+import { Section } from '@/interfaces';
 
 export const Selector: React.FC = () => {
-  const { sections, selectedSection }= useSelector((state: RootState) => state.section);
+  const router = useRouter();
+  const currentPath = router.pathname;
+
+  const { sections } = useSelector(
+    (state: RootState) => state.section
+  );
   const dispatch = useDispatch();
+
+  const handleSectionSelection = (section: Section) => {
+    dispatch(resetProducts());
+    dispatch(modifySection(section));
+  };
 
   return (
     <Container>
@@ -14,16 +27,20 @@ export const Selector: React.FC = () => {
           <Button
             size='large'
             key={section.key}
-            sx={{
-              fontWeight: 'bold',
-              color:
-                section.key === selectedSection.key
-                  ? '#903df7'
-                  : '#0F110C',
-            }}
-            onClick={() => dispatch(modifySection(section))}
+            onClick={() => handleSectionSelection(section)}
           >
-            {section.label}
+            <Link
+              href={`/${section.key}`}
+              key={section.key}
+              style={{
+                textDecoration: 'none',
+                fontWeight: 'bold',
+                color:
+                  currentPath.includes(section.key) ? '#903df7' : '#0F110C',
+              }}
+            >
+              {section.label}
+            </Link>
           </Button>
         ))}
       </ButtonGroup>

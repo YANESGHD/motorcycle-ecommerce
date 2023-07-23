@@ -1,4 +1,6 @@
+import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { Typography } from '@mui/material';
 import styled from '@emotion/styled';
 
@@ -7,12 +9,17 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const router = useRouter();
+  const currentPath = router.pathname;
+
   return (
-    <Container>
-      <Image src={`/motorcycle_photos/${product.baseProductCode}.jpg`} alt='Product' width={260} height={240}/>
-      <Typography variant='body1'>{product.name}</Typography>
-      <Typography variant='body1'>{product.priceFormatted}</Typography>
-    </Container>
+    <Link href={`/${currentPath}/${product.baseProductCode}`} style={{ textDecoration: 'none', color: '#0F110C' }}>
+      <Container>
+        <Image src={`/motorcycle_photos/${product.baseProductCode}.jpg`} alt='Product' width={260} height={240}/>
+        <Typography variant='body1' sx={{ fontWeight: '500' }}>{product.name}</Typography>
+        <Typography variant='body1'>{product.priceFormatted}</Typography>
+      </Container>
+    </Link>
   );
 }; 
 
