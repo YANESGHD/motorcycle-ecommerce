@@ -4,16 +4,17 @@ import { Grid } from '@mui/material';
 import { ProductCard } from '..';
 
 interface ListProductsProps {
+  type: string
   products: any
 }
 
-export const ListProducts: React.FC<ListProductsProps> = ({ products }) => {
+export const ListProducts: React.FC<ListProductsProps> = ({ type, products }) => {
   return (
     <Container>
       <Grid container>
         {products.map((product: any) => (
           <Grid item xs={12} sm={6} md={3} key={product.baseProductCode}>
-            <ProductCard product={product} />
+            <ProductCard type={type} product={product} />
           </Grid>
         ))}
       </Grid>

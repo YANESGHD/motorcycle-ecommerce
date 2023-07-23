@@ -1,24 +1,12 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useSelector, useDispatch } from 'react-redux';
 import styled from '@emotion/styled';
 import { ButtonGroup, Button } from '@mui/material';
-import { RootState, modifySection, resetProducts } from '@/store';
-import { Section } from '@/interfaces';
+import { sections } from '@/constants';
 
 export const Selector: React.FC = () => {
   const router = useRouter();
   const currentPath = router.pathname;
-
-  const { sections } = useSelector(
-    (state: RootState) => state.section
-  );
-  const dispatch = useDispatch();
-
-  const handleSectionSelection = (section: Section) => {
-    dispatch(resetProducts());
-    dispatch(modifySection(section));
-  };
 
   return (
     <Container>
@@ -27,7 +15,6 @@ export const Selector: React.FC = () => {
           <Button
             size='large'
             key={section.key}
-            onClick={() => handleSectionSelection(section)}
           >
             <Link
               href={`/${section.key}`}
@@ -36,7 +23,7 @@ export const Selector: React.FC = () => {
                 textDecoration: 'none',
                 fontWeight: 'bold',
                 color:
-                  currentPath.includes(section.key) ? '#903df7' : '#0F110C',
+                currentPath.includes(section.key) ? '#903df7' : '#0F110C',
               }}
             >
               {section.label}

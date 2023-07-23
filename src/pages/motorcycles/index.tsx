@@ -2,32 +2,38 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from '@emotion/styled';
 import { ListProducts, Loader, NotFoundMessage, Landing } from '@/components';
-import { RootState, modifyProducts } from '@/store';
+import { RootState, modifyMotorcycles, fetchingMotorcycles } from '@/store';
 
 const Motorcycles: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const { selectedSection } = useSelector((state: RootState) => state.section);
-  const { products } = useSelector((state: RootState) => state.product);
+  const { isLoading, motorcycles } = useSelector(
+    (state: RootState) => state.motorcycles
+  );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setIsLoading(true)
-    fetch(`/api/motorcycles`)
-      .then((res) => res.json())
-      .then((res) => {
-        dispatch(modifyProducts(res.data.data))
-        setIsLoading(false)
-      })
-  }, [selectedSection]);
+    if (motorcycles.length === 0) {
+      dispatch(fetchingMotorcycles());
+
+      fetch(`/api/motorcycles`)
+        .then((res) => res.json())
+        .then((res) => {
+          dispatch(
+            modifyMotorcycles({ isLoading: false, motorcycles: res.data.data })
+          );
+        });
+    }
+  }, []);
 
   return (
     <>
       <Landing />
       <Container>
         {isLoading && <Loader />}
-        {!isLoading && !products.length && <NotFoundMessage />}
-        {!isLoading && products.length && <ListProducts products={products}/>}
+        {!isLoading && !motorcycles.length && <NotFoundMessage />}
+        {!isLoading && motorcycles.length > 0 && (
+          <ListProducts type='motorcycles' products={motorcycles} />
+        )}
       </Container>
     </>
   );

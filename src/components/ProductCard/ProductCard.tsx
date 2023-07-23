@@ -5,17 +5,15 @@ import { Typography } from '@mui/material';
 import styled from '@emotion/styled';
 
 interface ProductCardProps {
+  type: string;
   product: any
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({  product }) => {
-  const router = useRouter();
-  const currentPath = router.pathname;
-
+export const ProductCard: React.FC<ProductCardProps> = ({ type, product }) => {
   return (
-    <Link href={`/${currentPath}/${product.baseProductCode}`} style={{ textDecoration: 'none', color: '#0F110C' }}>
+    <Link href={`/${type}/${product.baseProductCode}`} style={{ textDecoration: 'none', color: '#0F110C' }}>
       <Container>
-        <Image src={`${currentPath}/${product.baseProductCode}.jpg`} alt='Product' width={260} height={167}/>
+        <Image src={`/${type}/${product.baseProductCode}.jpg`} alt='Product' width={260} height={167}/>
         <Typography variant='body1' sx={{ fontWeight: '500' }}>{product.name}</Typography>
         <Typography variant='body1'>{product.priceFormatted}</Typography>
       </Container>
