@@ -92,10 +92,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({ type, product }) => {
                 {product.name}
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={6} md={6}>
+            <Grid item xs={6} sm={6} md={6}>
               Price
             </Grid>
-            <Grid item xs={12} sm={6} md={6}>
+            <Grid item xs={6} sm={6} md={6}>
               <Typography
                 variant='body1'
                 sx={{ pb: '20px', display: 'flex', justifyContent: 'right' }}
@@ -108,7 +108,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({ type, product }) => {
               <Divider light sx={{ mb: '10px', fontWeight: '500' }} />
             </Grid>
 
-            <Grid item xs={12} sm={6} sx={{ pr: '10px' }}>
+            <Grid item xs={12} sm={6} sx={{ pr: { xs: 0, md: '10px' } }}>
               <InputLabel sx={{ pt: '10px' }}>First Name</InputLabel>
               <TextField
                 type='text'
@@ -126,7 +126,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({ type, product }) => {
               </FormHelperText>
             </Grid>
 
-            <Grid item xs={12} sm={6} sx={{ pl: '10px' }}>
+            <Grid item xs={12} sm={6} sx={{ pl: { xs: 0, md: '10px' } }}>
               <InputLabel sx={{ pt: '10px' }}>Last Name</InputLabel>
               <TextField
                 type='text'

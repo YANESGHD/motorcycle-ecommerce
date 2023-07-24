@@ -14,14 +14,24 @@ export const ProductCard: React.FC<ProductCardProps> = ({ type, product }) => {
     <Container>
       <Link
         href={`/${type}/${product.baseProductCode}`}
-        style={{ textDecoration: 'none', color: '#0F110C' }}
+        style={{
+          textDecoration: 'none',
+          color: '#0F110C',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+        }}
       >
-        <Image
-          src={`/${type}/${product.baseProductCode}.jpg`}
-          alt='Product'
-          width={260}
-          height={160}
-        />
+        <ImageContainer>
+          <Image
+            src={`/${type}/${product.baseProductCode}.jpg`}
+            alt='Product'
+            width={0}
+            height={0}
+            layout='responsive'
+          />
+        </ImageContainer>
         <Typography
           variant='body1'
           sx={{ fontSize: '14px', fontWeight: '500' }}
@@ -37,15 +47,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ type, product }) => {
 };
 
 const Container = styled.div`
-  width: 85%;
-  height: 290px;
+  width: 90%;
+  height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   align-items: center;
   padding: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
   transition: box-shadow 0.3s ease-in-out;
   border-radius: 14px;
   border: 1px solid #e5e5e5;
@@ -53,5 +63,24 @@ const Container = styled.div`
   &:hover {
     cursor: pointer;
     transform: scale(1.02);
+  }
+
+  @media (min-width: 668px) {
+    height: 320px;
+    width: 85%;
+    margin-bottom: 40px;
+  }
+`;
+
+const ImageContainer = styled.div`
+  width: 180px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 668px) {
+    width: 200px;
+    height: 180px;
   }
 `;

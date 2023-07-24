@@ -17,7 +17,14 @@ export const SuccessMessage: React.FC<SuccessMessageProps> = ({ type }) => {
           color: '#408500',
         }}
       />
-      <Typography variant='h2' sx={{ fontSize: '34px', pb: '14px' }}>
+      <Typography
+        variant='h2'
+        sx={{
+          fontSize: { xs: '24px', md: '34px' },
+          pb: '14px',
+          textAlign: 'center',
+        }}
+      >
         Thank you for your inquiry
       </Typography>
       <Typography variant='body1' sx={{ fontSize: '16px', pb: '14px' }}>

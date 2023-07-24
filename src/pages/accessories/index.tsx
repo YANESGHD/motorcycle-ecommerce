@@ -40,5 +40,9 @@ const Accessories: React.FC = () => {
 export default Accessories;
 
 const Container = styled.div`
-  padding: 40px 70px;
+  padding: 20px;
+
+  @media (min-width: 668px) {
+    padding: 40px 70px;
+  }
 `;

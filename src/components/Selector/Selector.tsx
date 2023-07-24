@@ -18,15 +18,12 @@ export const Selector: React.FC = () => {
               key={section.key}
               style={{
                 textDecoration: 'none',
-                fontWeight: 'bold',
-                color: currentPath.includes(section.key)
-                  ? '#903df7'
-                  : '#0F110C',
               }}
             >
               <Button
                 size='large'
                 sx={{
+                  fontSize: { xs: 14, md: 16 },
                   fontWeight: 'bold',
                   color: currentPath.includes(section.key)
                     ? '#903df7'
@@ -36,7 +33,13 @@ export const Selector: React.FC = () => {
                 {section.label}
               </Button>
             </Link>
-            {index === 0 && <Divider orientation='vertical' variant='middle' sx={{ bgcolor: 'black', fontWeight: 'bold' }} />}
+            {index === 0 && (
+              <Divider
+                orientation='vertical'
+                variant='middle'
+                sx={{ bgcolor: 'black', fontWeight: 'bold' }}
+              />
+            )}
           </ItemContainer>
         ))}
       </ButtonGroup>
