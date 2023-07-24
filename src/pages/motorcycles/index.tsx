@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from '@emotion/styled';
 import { ListProducts, Loader, NotFoundMessage, Landing } from '@/components';
@@ -17,10 +17,8 @@ const Motorcycles: React.FC = () => {
 
       fetch(`/api/motorcycles`)
         .then((res) => res.json())
-        .then((res) => {
-          dispatch(
-            modifyMotorcycles({ isLoading: false, motorcycles: res.data.data })
-          );
+        .then((data) => {
+          dispatch(modifyMotorcycles({ isLoading: false, motorcycles: data }));
         });
     }
   }, []);

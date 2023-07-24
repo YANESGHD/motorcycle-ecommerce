@@ -12,8 +12,8 @@ export const Navbar: React.FC = () => {
           <Image
             src="/simplimuv-logo.png"
             alt="Simplimuv Logo"
-            width={80}
-            height={20}
+            width={110}
+            height={25}
           />
         </Link>
 

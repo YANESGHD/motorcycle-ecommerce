@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from '@emotion/styled';
 import { ListProducts, Loader, NotFoundMessage, Landing } from '@/components';
@@ -17,10 +17,8 @@ const Accessories: React.FC = () => {
 
       fetch(`/api/accessories`)
         .then((res) => res.json())
-        .then((res) => {
-          dispatch(
-            modifyAccessories({ isLoading: false, accessories: res.data.data })
-          );
+        .then((data) => {
+          dispatch(modifyAccessories({ isLoading: false, accessories: data }));
         });
     }
   }, []);
@@ -42,5 +40,5 @@ const Accessories: React.FC = () => {
 export default Accessories;
 
 const Container = styled.div`
-  padding: 40px 20px;
+  padding: 40px 70px;
 `;

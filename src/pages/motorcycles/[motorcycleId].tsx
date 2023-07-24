@@ -3,11 +3,11 @@ import { ProductDetails } from '@/components';
 
 export default function MotorcycleDetails() {
   const router = useRouter();
-  const motorcycleId = router.query.motorcycleId;
+  const motorcycleId = router.query.motorcycleId as string;
 
   return (
     <>
-      {motorcycleId && <ProductDetails productPath={`motorcycles/${motorcycleId}`}/>}
+      {motorcycleId && <ProductDetails type='motorcycles' productId={motorcycleId} />}
     </>
   );
 };

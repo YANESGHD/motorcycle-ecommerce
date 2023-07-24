@@ -1,14 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import accessories from '@/data/accessories.json';
+import { Accessories } from '@/data/models/accessories';
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const {
     query: { accessoryId },
   } = req;
+  const products = await Accessories.find().limit(20).exec();
+  const product = products.find((product) => product.baseProductCode === accessoryId);
 
-  const product = accessories.data.data.find((product) => product.baseProductCode === accessoryId);
   res.status(200).json(product);
 }

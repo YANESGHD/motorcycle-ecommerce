@@ -3,11 +3,11 @@ import { ProductDetails } from '@/components';
 
 export default function AccessoryDetails() {
   const router = useRouter();
-  const accessoryId = router.query.accessoryId;
+  const accessoryId = router.query.accessoryId as string;
 
   return (
     <>
-      {accessoryId && <ProductDetails productPath={`accessories/${accessoryId}`}/>}
+      {accessoryId && <ProductDetails type='accessories' productId={accessoryId} />}
     </>
   );
 };

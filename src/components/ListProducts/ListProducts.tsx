@@ -1,14 +1,16 @@
-import Link from 'next/link';
 import styled from '@emotion/styled';
 import { Grid } from '@mui/material';
 import { ProductCard } from '..';
 
 interface ListProductsProps {
-  type: string
-  products: any
+  type: string;
+  products: any;
 }
 
-export const ListProducts: React.FC<ListProductsProps> = ({ type, products }) => {
+export const ListProducts: React.FC<ListProductsProps> = ({
+  type,
+  products,
+}) => {
   return (
     <Container>
       <Grid container>
@@ -24,4 +26,8 @@ export const ListProducts: React.FC<ListProductsProps> = ({ type, products }) =>
 
 const Container = styled.div`
   padding-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;

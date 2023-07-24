@@ -7,10 +7,46 @@ import { Motorcycle } from '@/interfaces';
 import { ProductForm } from '../';
 
 interface ProductDetailsProps {
-  productPath: string
+  type: string;
+  productId: string;
 }
 
-export const ProductDetails: React.FC<ProductDetailsProps> = ({ productPath }) => {
+interface DetailsProps {
+  product: Motorcycle,
+  setShowForm: (value: boolean) => void;
+}
+
+const Details: React.FC<DetailsProps> = ({ product, setShowForm }) => {
+  return (
+  <>
+    <Typography variant='h2' sx={{ fontSize: '34px', pb: '10px' }}>
+      {product.name}
+    </Typography>
+    <Typography variant='body1' sx={{ pb: '20px', fontWeight: '500' }}>
+      {product.priceFormatted}
+    </Typography>
+    <Divider light />
+    <Typography
+      variant='body1'
+      sx={{ pt: '20px', pb: '8px', fontWeight: '500' }}
+    >
+      Description
+    </Typography>
+    <Typography variant='body1'>{product.description ?? 'N/A'}</Typography>
+    <StyledButton
+      variant='contained'
+      sx={{ mt: '40px' }}
+      onClick={() => setShowForm(true)}
+    >
+      Purchase
+    </StyledButton>
+  </>
+)};
+
+export const ProductDetails: React.FC<ProductDetailsProps> = ({
+  type,
+  productId,
+}) => {
   const router = useRouter();
   const currentPath = router.asPath;
 
@@ -19,13 +55,13 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ productPath }) =
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true)
-    fetch(`/api/${productPath}`)
+    setIsLoading(true);
+    fetch(`/api/${type}/${productId}`)
       .then((res) => res.json())
       .then((res) => {
         setData(res);
         setIsLoading(false);
-      })
+      });
   }, []);
 
   if (!data) {
@@ -37,23 +73,21 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ productPath }) =
       <Grid container>
         <Grid item xs={12} sm={6}>
           <ItemContainer>
-            <Image src={`${currentPath}.jpg`} alt='Product' width={500} height={350}/>
+            <Image
+              src={`${currentPath}.jpg`}
+              alt='Product'
+              width={500}
+              height={350}
+            />
           </ItemContainer>
         </Grid>
 
         <Grid item xs={12} sm={6}>
           <DetailsContainer>
             {showForm ? (
-              <ProductForm product={data} />
+              <ProductForm type={type} product={data} />
             ) : (
-              <>
-                <Typography variant='h2' sx={{ fontSize: '34px', pb: '10px' }}>{data.name}</Typography>
-                <Typography variant='body1' sx={{ pb: '20px', fontWeight: '500' }} >{data.priceFormatted}</Typography>
-                <Divider light />
-                <Typography variant='body1' sx={{ pt: '20px', pb: '8px', fontWeight: '500' }}>Description</Typography>
-                <Typography variant='body1'>{data.description ?? 'N/A'}</Typography>
-                <StyledButton variant="contained" sx={{ mt: '40px' }} onClick={() => setShowForm(true)}>Purchase</StyledButton>
-              </>
+              <Details product={data} setShowForm={setShowForm} />
             )}
           </DetailsContainer>
         </Grid>

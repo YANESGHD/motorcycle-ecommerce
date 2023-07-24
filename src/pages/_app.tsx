@@ -11,9 +11,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Layout>
-          <Component {...pageProps} /> 
+          <Component {...pageProps} />
         </Layout>
       </ThemeProvider>
     </Provider>
   );
-};
+}

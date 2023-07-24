@@ -1,0 +1,11 @@
+[
+  {
+    "first_name": "test-lead",
+    "last_name": "test-lead-lastname",
+    "email": "test@test.com",
+    "phone": "+142424242",
+    "product_type": "motorcycles",
+    "product_name": "test-id",
+    "product_price": 12345
+  }
+]

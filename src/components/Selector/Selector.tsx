@@ -12,7 +12,7 @@ export const Selector: React.FC = () => {
     <Container>
       <ButtonGroup color='secondary' variant='text'>
         {sections.map((section, index) => (
-          <>
+          <ItemContainer key={section.key}>
             <Link
               href={`/${section.key}`}
               key={section.key}
@@ -36,8 +36,8 @@ export const Selector: React.FC = () => {
                 {section.label}
               </Button>
             </Link>
-            {index === 0 && <Divider orientation='vertical' variant='middle' flexItem />}
-          </>
+            {index === 0 && <Divider orientation='vertical' variant='middle' sx={{ bgcolor: 'black', fontWeight: 'bold' }} />}
+          </ItemContainer>
         ))}
       </ButtonGroup>
     </Container>
@@ -49,4 +49,10 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+const ItemContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
