@@ -63,7 +63,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({
         setData(res);
         setIsLoading(false);
       });
-  }, []);
+  }, [type, productId]);
 
   if (!data) {
     return null;

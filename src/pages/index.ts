@@ -6,7 +6,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     router.replace('/motorcycles');
-  }, []);
+  }, [router]);
 
   return null;
 };

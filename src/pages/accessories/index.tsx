@@ -21,7 +21,7 @@ const Accessories: React.FC = () => {
           dispatch(modifyAccessories({ isLoading: false, accessories: data }));
         });
     }
-  }, []);
+  }, [accessories, dispatch]);
 
   return (
     <>
