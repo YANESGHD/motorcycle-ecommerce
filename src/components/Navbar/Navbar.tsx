@@ -26,12 +26,7 @@ export const Navbar: React.FC = () => {
 
         <Selector />
 
-        <IconButton>
-          <ShoppingBagOutlined
-            color='secondary'
-            sx={{ fontSize: { xs: 25, md: 30 } }}
-          />
-        </IconButton>
+        <div></div>
       </Toolbar>
     </AppBar>
   );
