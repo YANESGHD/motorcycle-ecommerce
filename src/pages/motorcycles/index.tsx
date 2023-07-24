@@ -21,7 +21,7 @@ const Motorcycles: React.FC = () => {
           dispatch(modifyMotorcycles({ isLoading: false, motorcycles: data }));
         });
     }
-  }, [motorcycles, dispatch]);
+  }, []);
 
   return (
     <>
