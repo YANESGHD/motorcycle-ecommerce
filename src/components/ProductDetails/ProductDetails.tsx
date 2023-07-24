@@ -12,36 +12,37 @@ interface ProductDetailsProps {
 }
 
 interface DetailsProps {
-  product: Motorcycle,
+  product: Motorcycle;
   setShowForm: (value: boolean) => void;
 }
 
 const Details: React.FC<DetailsProps> = ({ product, setShowForm }) => {
   return (
-  <>
-    <Typography variant='h2' sx={{ fontSize: '34px', pb: '10px' }}>
-      {product.name}
-    </Typography>
-    <Typography variant='body1' sx={{ pb: '20px', fontWeight: '500' }}>
-      {product.priceFormatted}
-    </Typography>
-    <Divider light />
-    <Typography
-      variant='body1'
-      sx={{ pt: '20px', pb: '8px', fontWeight: '500' }}
-    >
-      Description
-    </Typography>
-    <Typography variant='body1'>{product.description ?? 'N/A'}</Typography>
-    <StyledButton
-      variant='contained'
-      sx={{ mt: '40px' }}
-      onClick={() => setShowForm(true)}
-    >
-      Purchase
-    </StyledButton>
-  </>
-)};
+    <>
+      <Typography variant='h2' sx={{ fontSize: '34px', pb: '10px' }}>
+        {product.name}
+      </Typography>
+      <Typography variant='body1' sx={{ pb: '20px', fontWeight: '500' }}>
+        {product.priceFormatted}
+      </Typography>
+      <Divider light />
+      <Typography
+        variant='body1'
+        sx={{ pt: '20px', pb: '8px', fontWeight: '500' }}
+      >
+        Description
+      </Typography>
+      <Typography variant='body1'>{product.description ?? 'N/A'}</Typography>
+      <StyledButton
+        variant='contained'
+        sx={{ mt: '40px' }}
+        onClick={() => setShowForm(true)}
+      >
+        Purchase
+      </StyledButton>
+    </>
+  );
+};
 
 export const ProductDetails: React.FC<ProductDetailsProps> = ({
   type,

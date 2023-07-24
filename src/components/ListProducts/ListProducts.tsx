@@ -15,7 +15,18 @@ export const ListProducts: React.FC<ListProductsProps> = ({
     <Container>
       <Grid container>
         {products.map((product: any) => (
-          <Grid item xs={12} sm={6} md={3} key={product.baseProductCode}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={3}
+            key={product.baseProductCode}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
             <ProductCard type={type} product={product} />
           </Grid>
         ))}

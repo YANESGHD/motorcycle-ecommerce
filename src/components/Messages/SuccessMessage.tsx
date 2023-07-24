@@ -10,7 +10,13 @@ interface SuccessMessageProps {
 export const SuccessMessage: React.FC<SuccessMessageProps> = ({ type }) => {
   return (
     <Container>
-      <CheckCircle sx={{ fontSize: { xs: 60, md: 85 }, marginBottom: '40px', color: '#408500' }} />
+      <CheckCircle
+        sx={{
+          fontSize: { xs: 60, md: 80 },
+          marginBottom: '40px',
+          color: '#408500',
+        }}
+      />
       <Typography variant='h2' sx={{ fontSize: '34px', pb: '14px' }}>
         Thank you for your inquiry
       </Typography>
@@ -24,7 +30,9 @@ export const SuccessMessage: React.FC<SuccessMessageProps> = ({ type }) => {
           fontWeight: 'bold',
         }}
       >
-        <Button variant='contained' sx={{ mt: '30px' }}>Go to Home</Button>
+        <Button variant='contained' sx={{ mt: '30px' }}>
+          Go to Home
+        </Button>
       </Link>
     </Container>
   );

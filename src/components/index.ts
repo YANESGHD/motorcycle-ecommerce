@@ -5,7 +5,6 @@ export { ProductCard } from './ProductCard';
 export { ListProducts } from './ListProducts';
 export { Selector } from './Selector';
 export { Loader } from './Loader';
-export { NotFoundMessage } from './NotFoundMessage';
 export { ProductDetails } from './ProductDetails';
 export { ProductForm } from './ProductForm';
-export { SuccessMessage } from './SuccessMessage';
+export { SuccessMessage, NotFoundMessage } from './Messages';

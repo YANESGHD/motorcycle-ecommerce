@@ -10,7 +10,7 @@ import {
   Grid,
   FormHelperText,
 } from '@mui/material';
-import { SuccessMessage } from '../SuccessMessage';
+import { SuccessMessage } from '../';
 
 interface ProductFormProps {
   type: string;
