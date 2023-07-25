@@ -8,3 +8,4 @@ export { Loader } from './Loader';
 export { ProductDetails } from './ProductDetails';
 export { ProductForm } from './ProductForm';
 export { SuccessMessage, NotFoundMessage } from './Messages';
+export { DetailsPage } from './DetailsPage';

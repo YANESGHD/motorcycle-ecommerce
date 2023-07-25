@@ -58,3 +58,29 @@ export interface Motorcycle {
   trim: Trim[];
   colors: ColorOption[];
 }
+
+export interface Accessory {
+  price: number;
+  retailPriceFormatted: string;
+  primaryThumbnailUrl: string;
+  priceFormatted: string;
+  badges: string[];
+  baseProductCode: string;
+  pdpProductUrl: string;
+  formattedName: string;
+  superCategoryCodes: string[];
+  primaryCategoryName: string;
+  productOptions: string[];
+  hoverThumbnailUrl: string;
+  numberOfReviews: number;
+  name: string;
+  retailPrice: number;
+  averageRating: number;
+  primaryCategoryCode: string;
+  priceDisclaimerNum: string;
+  url: string;
+  title: string;
+  pid: string;
+  thumb_image: string;
+  description?: string;
+}

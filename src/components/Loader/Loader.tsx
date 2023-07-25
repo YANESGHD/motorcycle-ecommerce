@@ -4,12 +4,13 @@ import { CircularProgress } from '@mui/material';
 export const Loader: React.FC = () => {
   return (
     <Container>
-      <CircularProgress sx={{ color: '#903df7', fontSize: 90 }} />
+      <CircularProgress />
     </Container>
   );
 };
 
 const Container = styled.div`
+  font-size: 90px;
   width: 100%;
   height: 300px;
   display: flex;

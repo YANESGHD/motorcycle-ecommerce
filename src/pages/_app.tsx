@@ -5,7 +5,7 @@ import { theme } from '@/styles';
 import { Provider } from 'react-redux';
 import { store } from '@/store';
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
@@ -16,4 +16,6 @@ export default function App({ Component, pageProps }: AppProps) {
       </ThemeProvider>
     </Provider>
   );
-}
+};
+
+export default App;

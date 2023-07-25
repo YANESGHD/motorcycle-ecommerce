@@ -1,13 +1,17 @@
 import { useRouter } from 'next/router';
-import { ProductDetails } from '@/components';
+import { DetailsPage } from '@/components';
 
-export default function AccessoryDetails() {
+const AccessoryDetails = () => {
   const router = useRouter();
   const accessoryId = router.query.accessoryId as string;
 
   return (
     <>
-      {accessoryId && <ProductDetails type='accessories' productId={accessoryId} />}
+      {accessoryId && (
+        <DetailsPage type='accessories' productId={accessoryId} />
+      )}
     </>
   );
 };
+
+export default AccessoryDetails;

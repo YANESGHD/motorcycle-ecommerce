@@ -1,13 +1,17 @@
 import { useRouter } from 'next/router';
-import { ProductDetails } from '@/components';
+import { DetailsPage } from '@/components';
 
-export default function MotorcycleDetails() {
+const MotorcycleDetails = () => {
   const router = useRouter();
   const motorcycleId = router.query.motorcycleId as string;
 
   return (
     <>
-      {motorcycleId && <ProductDetails type='motorcycles' productId={motorcycleId} />}
+      {motorcycleId && (
+        <DetailsPage type='motorcycles' productId={motorcycleId} />
+      )}
     </>
   );
 };
+
+export default MotorcycleDetails;

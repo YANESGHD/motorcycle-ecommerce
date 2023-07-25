@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Motorcycle } from '@/interfaces';
+import { Motorcycle, Accessory } from '@/interfaces';
 import styled from '@emotion/styled';
 import {
   Typography,
@@ -14,7 +14,7 @@ import { SuccessMessage } from '../';
 
 interface ProductFormProps {
   type: string;
-  product: Motorcycle;
+  product: Motorcycle | Accessory;
 }
 
 export const ProductForm: React.FC<ProductFormProps> = ({ type, product }) => {
