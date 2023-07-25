@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { AppBar, Toolbar, IconButton } from '@mui/material';
-import { ShoppingBagOutlined } from '@mui/icons-material';
+import { AppBar, Toolbar } from '@mui/material';
 import styled from '@emotion/styled';
 import { Selector } from '../Selector';
 
